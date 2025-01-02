@@ -1,16 +1,16 @@
 package model;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Video {
     private String titulo;
     private String descricao;
     private int duracao; // em minutos
     private String categoria;
-    private Date dataPublicacao;
+    private LocalDate dataPublicacao;
 
-    public Video(String titulo, String descricao, int duracao, String categoria, Date dataPublicacao) {
+    public Video(String titulo, String descricao, int duracao, String categoria, LocalDate dataPublicacao) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.duracao = duracao;
@@ -34,7 +34,7 @@ public class Video {
         return categoria;
     }
 
-    public Date getDataPublicacao() {
+    public LocalDate getDataPublicacao() {
         return dataPublicacao;
     }
 
@@ -47,8 +47,8 @@ public class Video {
     public static Video fromString(String linha) {
         try {
             String[] partes = linha.split(";");
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            return new Video(partes[0], partes[1], Integer.parseInt(partes[2]), partes[3], sdf.parse(partes[4]));
+            LocalDate data = LocalDate.parse(partes[4]);
+            return new Video(partes[0], partes[1], Integer.parseInt(partes[2]), partes[3], data);
         } catch (Exception e) {
             return null; // Ignora erros de parsing
         }

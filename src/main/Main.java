@@ -7,8 +7,8 @@ import service.VideoServiceImpl;
 import strategy.SearchStrategy;
 import strategy.TitleSearchStrategy;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 
@@ -42,8 +42,8 @@ public class Main {
                 String dataStr = scanner.nextLine();
 
                 try {
-                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-                    Date dataPublicacao = sdf.parse(dataStr);
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                    LocalDate dataPublicacao = LocalDate.parse(dataStr, formatter);
                     Video video = new Video(titulo, descricao, duracao, categoria, dataPublicacao);
                     videoService.addVideo(video);
                     System.out.println("Vídeo adicionado com sucesso!");

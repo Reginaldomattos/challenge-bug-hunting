@@ -2,11 +2,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Video {
-    public String titulo;
-    public String descricao;
-    public int duracao; // em minutos
-    public String categoria;
-    public Date dataPublicacao;
+    private String titulo;
+    private String descricao;
+    private int duracao; // em minutos
+    private String categoria;
+    private Date dataPublicacao;
 
     public Video(String titulo, String descricao, int duracao, String categoria, Date dataPublicacao) {
         this.titulo = titulo;
